@@ -11,23 +11,23 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "172.31.18.75:8081"
+        NEXUS_URL = "172.31.26.137:8081"
         SNAP_REPO = "dave-snapshot"
         RELEASE_REPO= "dave-release"
         NEXUS_USER = "admin"
-        NEXUS_PASS = "ayuk1234"
+        NEXUS_PASS = "Bakwelle7556"
         CENTRAL_REPO = "maven-central-repo"
         NEXUS_GRP_REPO = "dave-group-repo"
-        NEXUSIP = "172.31.18.75"
+        NEXUSIP = "172.31.26.137"
         NEXUSPORT = "8081"
         NEXUS_LOGIN = "nexuslogin"
         SONARSCANNER = "sonarscanner"
         SONARSERVER = "sonarserver"
-        registryCredential = "ecr:us-east-1:awscredential"
-        applicationRegistry = "451445594773.dkr.ecr.us-east-1.amazonaws.com/davecr-repo"
-        davprojectRegistry = "https://451445594773.dkr.ecr.us-east-1.amazonaws.com"
-        cluster = "devcluster"
-        service = "devappsvc"
+        //registryCredential = "ecr:us-east-1:awscredential"
+        //applicationRegistry = "451445594773.dkr.ecr.us-east-1.amazonaws.com/davecr-repo"
+        //davprojectRegistry = "https://451445594773.dkr.ecr.us-east-1.amazonaws.com"
+        //cluster = "devcluster"
+        //service = "devappsvc"
 
         
 
@@ -36,7 +36,7 @@ pipeline {
     stages {
         stage ('code checkout'){
             steps {
-                git branch: 'ci-jenkins', credentialsId: 'gitcred', url: 'https://github.com/fridadavid/davproject.git'
+                git branch: 'ci-jenkins', credentialsId: 'githublogin', url: 'https://github.com/Ekule/ekule-dave-cicd.git'
             }
         }
         stage('Build') {
@@ -110,6 +110,7 @@ stage('quality Gate') {
      )
             }
         }
+        /*
         stage('Building application image'){
             steps {
                 script{
@@ -134,11 +135,12 @@ stage('quality Gate') {
                 }
             }
         }
+        */
     }
     post {
         always {
             echo 'slack notification.'
-            slackSend channel: '#davci-proj',
+            slackSend channel: '#cicddevops',
             color: COLOR_MAP[currentBuild.currentResult],
         message: "*${currentBuild.currentResult}:* job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
         }
