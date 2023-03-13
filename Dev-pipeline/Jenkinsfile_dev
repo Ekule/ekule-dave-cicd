@@ -26,8 +26,8 @@ pipeline {
         registryCredential = "ecr:us-west-1:awscredentials"
         applicationRegistry = "000147515071.dkr.ecr.us-west-1.amazonaws.com/ekule-dave"
         davprojectRegistry = "https://000147515071.dkr.ecr.us-west-1.amazonaws.com"
-        //cluster = "devcluster"
-        //service = "devappsvc"
+        cluster = "ekule-ECScluster"
+        service = "ekule-svc"
 
         
 
