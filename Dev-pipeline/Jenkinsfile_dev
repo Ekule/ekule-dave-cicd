@@ -23,9 +23,9 @@ pipeline {
         NEXUS_LOGIN = "nexuslogin"
         SONARSCANNER = "sonarscanner"
         SONARSERVER = "sonarserver"
-        //registryCredential = "ecr:us-east-1:awscredential"
-        //applicationRegistry = "451445594773.dkr.ecr.us-east-1.amazonaws.com/davecr-repo"
-        //davprojectRegistry = "https://451445594773.dkr.ecr.us-east-1.amazonaws.com"
+        registryCredential = "ecr:us-east-1:ekule-daveawscred"
+        applicationRegistry = "000147515071.dkr.ecr.us-west-1.amazonaws.com/ekule-dave"
+        davprojectRegistry = "https://000147515071.dkr.ecr.us-west-1.amazonaws.com"
         //cluster = "devcluster"
         //service = "devappsvc"
 
@@ -110,7 +110,7 @@ stage('quality Gate') {
      )
             }
         }
-        /*
+        
         stage('Building application image'){
             steps {
                 script{
@@ -128,6 +128,7 @@ stage('quality Gate') {
                 }
             }
         }
+        /*
         stage ('Deploy application to dev ecs'){
             steps{
                 withAWS(credentials: 'awscredential', region: 'us-east-1'){
