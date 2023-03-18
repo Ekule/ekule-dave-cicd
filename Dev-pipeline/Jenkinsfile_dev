@@ -11,23 +11,23 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "172.31.26.137:8081"
+        NEXUS_URL = "172.31.17.222:8081"
         SNAP_REPO = "dave-snapshot"
         RELEASE_REPO= "dave-release"
         NEXUS_USER = "admin"
         NEXUS_PASS = "Bakwelle7556"
         CENTRAL_REPO = "maven-central-repo"
         NEXUS_GRP_REPO = "dave-group-repo"
-        NEXUSIP = "172.31.26.137"
+        NEXUSIP = "172.31.17.222"
         NEXUSPORT = "8081"
         NEXUS_LOGIN = "nexuslogin"
         SONARSCANNER = "sonarscanner"
         SONARSERVER = "sonarserver"
-        registryCredential = "ecr:us-west-1:awscredentials"
-        applicationRegistry = "000147515071.dkr.ecr.us-west-1.amazonaws.com/ekule-dave"
-        davprojectRegistry = "https://000147515071.dkr.ecr.us-west-1.amazonaws.com"
-        cluster = "ekule-ECScluster"
-        service = "ekule-svc"
+        //registryCredential = "ecr:us-west-1:awscredentials"
+        //applicationRegistry = "000147515071.dkr.ecr.us-west-1.amazonaws.com/ekule-dave"
+        //davprojectRegistry = "https://000147515071.dkr.ecr.us-west-1.amazonaws.com"
+        //cluster = "ekule-ECScluster"
+        //service = "ekule-svc"
 
         
 
@@ -110,6 +110,7 @@ stage('quality Gate') {
      )
             }
         }
+        /*
         
         stage('Building application image'){
             steps {
